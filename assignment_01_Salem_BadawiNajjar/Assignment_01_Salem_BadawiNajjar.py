@@ -112,22 +112,22 @@ def checkPassword(user_password):
 
 
 # Testing Module 1
-#num = input("Enter positif number to calcute its factorial: ")
-#print(getFactorial(num))
+num = input("Enter positif number to calcute its factorial: ")
+print(getFactorial(num))
 
 
 # Testing Module 2
-#num = input("Enter an number to list its divisors: ")
-#print(listDivisors(num))
+num = input("Enter an number to list its divisors: ")
+print(listDivisors(num))
 
 
 # Testing Module 3
-#user_input = input("Enter a string to reverse: ")
-#print(reverseString(user_input))
+user_input = input("Enter a string to reverse: ")
+print(reverseString(user_input))
 
 # Testing Module 4
-#user_input = input("Enter a list of numbers between two brackets. For example [1,4,13]: ")
-#print(evenNumbers(user_input))
+user_input = input("Enter a list of numbers between two brackets. For example [1,4,13]: ")
+print(evenNumbers(user_input))
 
 # Testing Module 5
 user_input = input("Enter your password: ")
