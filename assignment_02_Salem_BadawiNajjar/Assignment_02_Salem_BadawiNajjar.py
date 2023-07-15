@@ -82,20 +82,26 @@ def choice2():
 
     input("\nPress any Key to continue")
 
-def matchCount(tag, index, occurence):
-
-    try: 
-        if code_string.index(tag,index) > 0:
-            if index < len(code_string):
-                occurence =  matchCount(tag, index+1, occurence + 1)
-        else: 
-            return 0
-        
-    except ValueError:  
-        return occurence
+def checkMatch(position,matches,string):
     
-       
-    return occurence
+    max_position = len(string) - len(tag) +1
+
+    if len(string) < len(tag):
+        
+        return matches
+    
+    index = string.find(tag)
+  
+
+    if index != -1:
+       matches +=1
+       position = index + len(tag)
+       string = string[position:]
+
+       return checkMatch(position,matches,string)
+    else:
+       return matches
+    
 
 def choice3():
 
@@ -107,6 +113,8 @@ def choice3():
     #file.close()            # Closing the file
 
     global code_string
+    global tag
+    global max_position
 
     code_string = """<html>
                 <head>
@@ -125,27 +133,28 @@ def choice3():
                 </body>
                 </html> """
     
-    tag = input("Specify tag to count its occurences:")
+    tag = input("Specify tag to count its occurences: ")
+
     tag ="<"+tag+">"
 
+    #code_string = "xx<li> <li> <h1>  sad <br> <br> sdf <li>"
     
-    code_string = "<li> <li>"
     
-    index = 0
-    occurence = 0
+    max_position = len(code_string) - len(tag)
+    matches = 0
 
-    try:
-        tag_count= matchCount(tag,index,occurence)
-                
-    except ValueError:
-        print("out of range")
+    if max_position < 0:
+       matches = 0
+    else:
+       matches = checkMatch(0,0,code_string)
 
-    print("the number of occurences is", tag_count)  
+    print("No of matches is: ",matches)
+
 
     input("\nPress any Key to continue") 
     
 
-    return
+    
 
 def main_Menu():
 
@@ -172,6 +181,7 @@ def main_Menu():
 
         elif choice == "4":
             break
+
 
 main_Menu()
 
