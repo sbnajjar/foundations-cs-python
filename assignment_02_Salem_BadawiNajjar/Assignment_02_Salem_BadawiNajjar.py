@@ -140,7 +140,7 @@ def choice3():
     #code_string = "xx<li> <li> <h1>  sad <br> <br> sdf <li>"
     
     
-    max_position = len(code_string) - len(tag)
+    max_position = len(code_string) -  len(tag)
     matches = 0
 
     if max_position < 0:
