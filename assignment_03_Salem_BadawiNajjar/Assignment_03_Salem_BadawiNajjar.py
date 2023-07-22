@@ -3,15 +3,10 @@
 import os  # this will allow to use os.sysem function from os library
 import json
 
-def choice1():
-
-    input1 = input("\nEnter First Tupple: ")
-        
-    input2 = input("\nEnter Second Tupple: ")
+def sumTuples(tup1,tup2):
 
     # Convert input strings to tuples
-    tup1 = eval(input1)
-    tup2 = eval(input2)
+    
 
     sum_tup = ""
 
@@ -65,7 +60,7 @@ def adjustDataForm(data_form):
 
 
 
-def writeJasonFile(orig_dict, output_file):
+def exportJasonFile(orig_dict, output_file):
 
     formatted_dict = str(adjustDataForm(orig_dict))
     
@@ -82,26 +77,28 @@ def writeJasonFile(orig_dict, output_file):
 
 
 
-def choice3():
+def ImportJasonFile(input_file):
+
+    file = open(input_file)       # Opening the file
+    imported_data = file.read()   # Reading the file content
+    file.close()                  # Closing the file
+
+    imported_data = eval(imported_data) # convert string data to dict
+
+    new_list = []
+
+    
+    for key, value in imported_data.items():
+       temp_dict = {}
+       temp_dict[key] = value
+       new_list.append(temp_dict)
+       
+    print("find below the imported list of dictionaries:\n")
+    print(new_list)
+
+
     input("\nPress any Key to continue") 
-    ### Alternative way to get input from external file ####
-"""
-    code_file = 
-    file = open(code_file)  # Opening the file
-    code_string = file.read()   # Reading the file content
-    file.close()            # Closing the file
-
-    #print(code_string)
-
-    write_data = str({"2": "123", "false": [1, 2], "1": [1, 3]})
-
-    #write_data = "{\n" + str('"2": "123"') + str(",\n")  + str('"false": [1, 2], "1": [1, 3]}')
-
-
-    print(write_data)
-"""
-
-        
+            
 
 def main_Menu():
 
@@ -122,7 +119,21 @@ def main_Menu():
         choice = input("Enter a choice: ")
         
         if  choice == "1":
-            choice1()
+
+            print("Enter two tuples of the same length \n")
+
+            input1 = input("\nEnter First Tupple: ")
+            input2 = input("\nEnter Second Tupple: ")
+
+            if len(input1) == len(input2): # compare both tuple lengths
+               input1 = eval(input1)  # convert input1 string to tuple
+               input2 = eval(input2) # convert input2 string to tuple
+               sumTuples(input1,input2)
+            else:
+               print('\nBoth tuples must have the same length')
+            
+            input("\nPress any Key to continue") 
+            
 
         elif choice == "2":
             
@@ -132,10 +143,13 @@ def main_Menu():
             
             output_file = "c:\data\output_data.json"    # data folder c:\data
            
-            writeJasonFile(orig_dict, output_file)
+            exportJasonFile(orig_dict, output_file)
 
         elif choice == "3":
-            choice3()
+
+            input_file = "c:\data\data.json"
+
+            ImportJasonFile(input_file)
 
         elif choice == "4":
             break
