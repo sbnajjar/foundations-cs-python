@@ -69,7 +69,8 @@ def exportJasonFile(orig_dict, output_file):
     file.write(formatted_dict)     # writing amended dict form to the output file 
     file.close()                   # Closing the file
 
-   
+    print("data is exported to new file: ", output_file )
+
     input("\nPress any Key to continue")
 
 
