@@ -1,12 +1,17 @@
 """
-The data text file includes several tickets in the following format:
+            Midterm Solution by SALEM BADAWI NAJJAR
+
+Notes:
+
+Given that data structure of ticketing system should include data in the following format:
 tick101, ev003, fred, 20230802, 0
 tick102, ev002, gio, 20230803, 2
 
-Since ticket no has unique ID then the special list of the system is a dictionary with the key been a ticket ID 
-and value been a list of relevant information  (event, user, date, priority)
+and since ticket ID should be unique then the data structure used in the system is a dictionary with key & value as below:
+- key :  ticket ID 
+- value : list of the remaining relevant information  (event, user, date, priority)
 
-The below is default data dictionary to be populated to a data file in case that file does not exist yet:
+The below is a default data dictionary to be exported initially to a newly created text file:
 
  default_data_dict = {
              "tick101": ["ev003","fred" ,"20230802" ,0], 
