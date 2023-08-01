@@ -550,7 +550,7 @@ def runEvents():
     
     clearScreen()
 
-    print("Today's events sorted by highest priority:\n")
+    print("Today's events :\n")
 
     print("Priority   Event   Ticket")    # display titles
     print("--------   -----   ------")
