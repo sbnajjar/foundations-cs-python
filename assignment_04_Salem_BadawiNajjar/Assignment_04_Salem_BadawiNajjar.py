@@ -105,6 +105,49 @@ def sendFriendRequest():
     return
 
 def removeFriend():
+
+    clearScreen()
+    print("\nLogin with your username")
+    user1 = getUsername()
+
+    print("\nEnter the username of your friend ")
+    user2 = getUsername()
+
+    if  user1 == user2:                                             #both users are the same
+        print("Usernames must be different. Please try again") 
+        input("\nPress any Key to continue")
+        return
+    
+    elif not (user1 in adjacency_list.keys()):                      # user1 is not registered in AL
+        print("\nuser",user1,"is not recognized. Please try again") 
+        input("\nPress any Key to continue") 
+        return
+    elif not (user2 in adjacency_list.keys()):                      # user2 is not registered in AL
+        print("\nuser",user2,"is not recognized. Please try again") 
+        input("\nPress any Key to continue") 
+        return
+    
+    else:                                                           # both users are already registred in AL
+
+        user1_friends = adjacency_list[user1]
+        user2_friends = adjacency_list[user2]
+
+        if not user2 in user1_friends:
+            print("\nuser",user2,"is already not connected to",user1,". Please try again")
+            return
+        
+        user1_friends = adjacency_list[user1]         # remove user2 from user1 friends
+        user1_friends.remove(user2)
+        adjacency_list[user1] = user1_friends
+
+        user2_friends = adjacency_list[user2]         # remove user1 from user2 friends
+        user2_friends.remove(user1)
+        adjacency_list[user2] = user2_friends
+                
+        print(user1, "and", user2,"are now disconnected")
+        
+        input("\nPress any Key to continue")
+
     return
 
 def listFriends():
